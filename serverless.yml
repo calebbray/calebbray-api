@@ -12,7 +12,7 @@ provider:
   stage: ${opt:stage, 'dev'}
   environment:
     NODE_ENV: ${opt:stage, 'local'}
-    DB_URL: ${file(env.yml):DB_URL}
+    DB_URL: ${env:DB_URL}
 
 functions:
   newPost:
