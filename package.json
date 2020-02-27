@@ -1,0 +1,23 @@
+{
+  "name": "caleb",
+  "version": "1.0.0",
+  "description": "Serverless webpack example using Typescript",
+  "main": "handler.js",
+  "scripts": {
+    "start": "trap 'docker-compose down; exit 0' INT; docker-compose up --build & nodemon -e 'yml js' --exec 'sls offline start -s local --skipCacheInvalidation'",
+    "start:qa": "trap 'docker-compose down; exit 0' INT; docker-compose up --build & nodemon -e 'yml js' --exec 'sls offline start -s qa --skipCacheInvalidation'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ajv": "^6.11.0",
+    "json-api-serializer": "^2.3.0",
+    "mongoose": "^5.8.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2",
+    "serverless": "^1.60.5",
+    "serverless-offline": "^5.12.1"
+  },
+  "author": "The serverless webpack authors (https://github.com/elastic-coders/serverless-webpack)",
+  "license": "MIT"
+}
