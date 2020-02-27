@@ -1,0 +1,62 @@
+service:
+  name: blog-api
+
+# Add the serverless-webpack plugin
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  region: us-west-2
+  stage: ${opt:stage, 'dev'}
+  environment:
+    NODE_ENV: ${opt:stage, 'local'}
+    DB_URL: ${file(env.yml):DB_URL}
+
+functions:
+  newPost:
+    handler: handlers/blog.postDoc
+    events:
+      - http:
+          method: post
+          path: newPost
+  createPost:
+    handler: handlers/blog.post
+    events:
+      - http:
+          method: post
+          path: createPost
+  getAllPosts:
+    handler: handlers/blog.getPosts
+    events:
+      - http:
+          method: get
+          path: posts
+  getPost:
+    handler: handlers/blog.getPost
+    events:
+      - http:
+          method: get
+          path: posts/{id}
+  createSkill:
+    handler: handlers/skills.createSkill
+    events:
+      - http:
+          method: post
+          path: skills
+  getSkills:
+    handler: handlers/skills.getSkills
+    events:
+      - http:
+          method: get
+          path: skills
+  getSkill:
+    handler: handlers/skills.getSkill
+    events:
+      - http:
+          method: get
+          path: skills/{id}
+custom:
+  serverless-offline:
+    port: 5000
