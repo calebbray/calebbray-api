@@ -53,6 +53,10 @@ module.exports.post = async event => {
 
     return {
       statusCode: 201,
+      headers: {
+        location: `/blog/${blogPostId}`,
+        'Access-Control-Allow-Origin': '*'
+      },
       body: JSON.stringify(newPost)
     };
   } catch (error) {
@@ -86,6 +90,10 @@ module.exports.getPost = async event => {
     post = Serializer.serialize('blogPost', post);
     return {
       statusCode: 201,
+      headers: {
+        location: `/blog/${blogPostId}`,
+        'Access-Control-Allow-Origin': '*'
+      },
       body: JSON.stringify(post)
     };
   } catch (error) {

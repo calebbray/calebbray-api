@@ -43,6 +43,10 @@ module.exports.getSkills = async event => {
     skills = Serializer.serialize('Skill', skills);
     return {
       statusCode: 200,
+      headers: {
+        location: `/blog/${blogPostId}`,
+        'Access-Control-Allow-Origin': '*'
+      },
       body: JSON.stringify(skills)
     };
   } catch (error) {
@@ -59,6 +63,10 @@ module.exports.getSkill = async event => {
     skill = Serializer.serialize('Skill', skill);
     return {
       statusCode: 200,
+      headers: {
+        location: `/blog/${blogPostId}`,
+        'Access-Control-Allow-Origin': '*'
+      },
       body: JSON.stringify(skill)
     };
   } catch (error) {
