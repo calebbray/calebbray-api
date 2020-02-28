@@ -4,4 +4,8 @@ services:
     image: mongo:4
     ports:
       - '27017:27017'
-    build: .
+    networks:
+      - dev
+networks:
+  dev:
+    driver: bridge
