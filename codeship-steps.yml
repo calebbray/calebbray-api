@@ -1,0 +1,4 @@
+- name: Deploy
+  service: app
+  tag: app-production
+  command: npm run deploy
