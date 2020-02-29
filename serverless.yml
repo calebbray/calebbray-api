@@ -12,7 +12,7 @@ provider:
   stage: ${opt:stage, 'dev'}
   environment:
     NODE_ENV: ${opt:stage, 'local'}
-    DB_URL: ${env:DB_URL}
+    DB_URL: ${env:DB_URL, file(./env.yml):DB_URL}
 
 functions:
   newPost:
@@ -21,42 +21,49 @@ functions:
       - http:
           method: post
           path: newPost
+          cors: true
   createPost:
     handler: handlers/blog.post
     events:
       - http:
           method: post
           path: createPost
+          cors: true
   getAllPosts:
     handler: handlers/blog.getPosts
     events:
       - http:
           method: get
           path: posts
+          cors: true
   getPost:
     handler: handlers/blog.getPost
     events:
       - http:
           method: get
           path: posts/{id}
+          cors: true
   createSkill:
     handler: handlers/skills.createSkill
     events:
       - http:
           method: post
           path: skills
+          cors: true
   getSkills:
     handler: handlers/skills.getSkills
     events:
       - http:
           method: get
           path: skills
+          cors: true
   getSkill:
     handler: handlers/skills.getSkill
     events:
       - http:
           method: get
           path: skills/{id}
+          cors: true
 custom:
   serverless-offline:
     port: 5000
