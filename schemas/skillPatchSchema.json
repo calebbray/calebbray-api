@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "SkillSchema",
+  "type": "object",
+  "required": ["data"],
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "$id": "#/properties/data",
+      "type": "object",
+      "required": ["type", "attributes"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "$id": "#/properties/data/properties/type",
+          "type": "string",
+          "pattern": "^Skill$"
+        },
+        "attributes": {
+          "$id": "#/properties/data/properties/attributes",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "$id": "#/properties/data/properties/attributes/properties/name",
+              "type": "string",
+              "pattern": "^(.+)$"
+            },
+            "rating": {
+              "$id": "#/properties/data/properties/attributes/properties/rating",
+              "type": "number"
+            },
+            "description": {
+              "$id": "#/properties/data/properties/attributes/properties/description",
+              "type": "string",
+              "pattern": "^(.+)$"
+            },
+            "iconLink": {
+              "$id": "#/properties/data/properties/attributes/properties/iconLink",
+              "type": "string",
+              "pattern": "^(.+)$"
+            },
+            "links": {
+              "$id": "#/properties/data/properties/attributes/properties/links",
+              "type": "array",
+              "items": {
+                "$id": "#properties/data/properties/attributes/properties/links/items",
+                "type": "string",
+                "pattern": "^(.+)$"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
