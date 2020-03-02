@@ -17,12 +17,9 @@ module.exports.formatValidationError = error => {
     },
     body: JSON.stringify({
       errors: error.map(err => {
-        let detail;
-        if (err.name === 'additionalProperties') {
-          detail = `'${err.argument}' is an invalid attribute.`;
-        } else {
-          let errorMessage = err.stack.replace('instance.', '');
-          detail = `Attribute ${errorMessage.replace(/"/g, "'")}`;
+        let detail = `${err.dataPath.replace(/\./g, '->')} ${err.message}.`;
+        if (err.keyword === 'additionalProperties') {
+          detail = `'${err.params.additionalProperty}' is an invalid attribute.`;
         }
         return {
           status: 400,

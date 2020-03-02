@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const { formatDatabaseError } = require('./formatDatabaseError');
 
-let { ENV, DB_URL } = process.env;
-console.log('=> ENV: ', ENV);
+let { NODE_ENV, DB_URL } = process.env;
+console.log('=> ENV: ', NODE_ENV);
 const url = NODE_ENV === 'PROD' ? DB_URL : 'mongodb://localhost:27017/calebdb';
 
 function connectToDatabase() {
