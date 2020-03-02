@@ -1,13 +1,19 @@
 const { connectToDatabase } = require('./connectToDatabase');
-const { formatError } = require('./formatError');
-const { formatResponse } = require('./formatResponse');
-const { parseMarkdown } = require('./parseMarkdown');
+const { formatDatabaseError } = require('./formatDatabaseError');
+const { formatInternalError } = require('./formatInternalError');
+const { formatNotFoundError } = require('./formatNotFoundError');
+const { formatBadRequestError } = require('./formatBadRequestError');
+const { formatValidationError } = require('./formatValidationError');
 const { parseBody } = require('./parseBody');
+const { parseMarkdown } = require('./parseMarkdown');
 
 module.exports = {
   connectToDatabase,
-  formatError,
-  formatResponse,
-  parseMarkdown,
-  parseBody
+  formatBadRequestError,
+  formatDatabaseError,
+  formatInternalError,
+  formatNotFoundError,
+  formatValidationError,
+  parseBody,
+  parseMarkdown
 };
