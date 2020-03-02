@@ -28,6 +28,9 @@ module.exports.createSkill = async event => {
     const serializedSkill = Serializer.serialize('Skill', _doc);
     return {
       statusCode: 201,
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      },
       body: JSON.stringify(serializedSkill)
     };
   } catch (error) {
@@ -44,7 +47,6 @@ module.exports.getSkills = async event => {
     return {
       statusCode: 200,
       headers: {
-        location: `/blog/${blogPostId}`,
         'Access-Control-Allow-Origin': '*'
       },
       body: JSON.stringify(skills)
@@ -64,7 +66,6 @@ module.exports.getSkill = async event => {
     return {
       statusCode: 200,
       headers: {
-        location: `/blog/${blogPostId}`,
         'Access-Control-Allow-Origin': '*'
       },
       body: JSON.stringify(skill)
