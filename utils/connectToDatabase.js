@@ -1,21 +1,23 @@
 const mongoose = require('mongoose');
+const { formatDatabaseError } = require('./formatDatabaseError');
 
-const { NODE_ENV, DB_URL } = process.env;
-
-console.log('> ENV: ', NODE_ENV);
-const url = NODE_ENV === 'PROD' || NODE_ENV === 'QA' ? DB_URL : 'mongodb://localhost:27017/calebdb';
+let { NODE_ENV, DB_URL } = process.env;
+console.log('=> ENV: ', NODE_ENV);
+const url = NODE_ENV === 'PROD' ? DB_URL : 'mongodb://localhost:27017/calebdb';
 
 function connectToDatabase() {
   if (mongoose.connection.readyState) {
-    console.log('> Using existing DB connection...');
+    console.log('=> Using existing database connection...');
     return;
   }
+  console.log('=> Createing new database connection...');
+  console.log(`=> Connection URL: ${url}`);
 
-  console.log('> Creating new database connection...');
-  console.log(`> Connecting URL: ${url}`);
   return mongoose
     .connect(url, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
-    .catch(error => console.log(error));
+    .catch(error => {
+      throw formatDatabaseError({ message: error.name });
+    });
 }
 
 module.exports = {
