@@ -20,14 +20,14 @@ functions:
     events:
       - http:
           method: post
-          path: newPost
+          path: posts/uploadPost
           cors: true
   createPost:
     handler: handlers/blog.post
     events:
       - http:
           method: post
-          path: createPost
+          path: posts/newPost
           cors: true
   getAllPosts:
     handler: handlers/blog.getPosts
@@ -41,6 +41,13 @@ functions:
     events:
       - http:
           method: get
+          path: posts/{id}
+          cors: true
+  updatePost:
+    handler: handlers/blog.updatePost
+    events:
+      - http:
+          method: patch
           path: posts/{id}
           cors: true
   createSkill:
@@ -62,6 +69,13 @@ functions:
     events:
       - http:
           method: get
+          path: skills/{id}
+          cors: true
+  updateSkill:
+    handler: handlers/skills.updateSkill
+    events:
+      - http:
+          method: patch
           path: skills/{id}
           cors: true
 custom:
