@@ -6,7 +6,7 @@ const skillSchema = new mongoose.Schema(
     rating: { type: Number },
     description: { type: String },
     iconLink: { type: String },
-    links: { type: [String] }
+    examples: { type: [Object] }
   },
   {
     collection: 'Skills'

@@ -41,13 +41,26 @@
               "type": "string",
               "pattern": "^(.+)$"
             },
-            "links": {
-              "$id": "#/properties/data/properties/attributes/properties/links",
+            "examples": {
+              "$id": "#/properties/data/properties/attributes/properties/examples",
               "type": "array",
               "items": {
-                "$id": "#properties/data/properties/attributes/properties/links/items",
-                "type": "string",
-                "pattern": "^(.+)$"
+                "$id": "#properties/data/properties/attributes/properties/examples/items",
+                "type": "object",
+                "required": ["link", "title"],
+                "additionalProperties": false,
+                "properties": {
+                  "link": {
+                    "$id": "properties/data/properties/attributes/properties/examples/items/properties/link",
+                    "type": "string",
+                    "pattern": "^https?://(.+)$"
+                  },
+                  "title": {
+                    "$id": "properties/data/properties/attributes/properties/examples/items/properties/title",
+                    "type": "string",
+                    "pattern": "^(.+)$"
+                  }
+                }
               }
             }
           }
