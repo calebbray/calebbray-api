@@ -9,7 +9,7 @@
     "deploy": "export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID; export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY; sls deploy -s PROD --force;"
   },
   "dependencies": {
-    "ajv": "^6.11.0",
+    "ajv": "^6.12.3",
     "json-api-serializer": "^2.3.0",
     "mongoose": "^5.8.6"
   },
